@@ -1,14 +1,17 @@
-import "./global.css"
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Auth from './Auth'; // Your code above
+import UsersPage from './UsersPage'; // Create this
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-red-500">
-      <Text className="text-xl font-bold text-blue-500 text-center">Open up App.tsx to start working on your app! aaa</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Auth" component={Auth}  options={{ headerShown: false }}  />
+        <Stack.Screen name="Users" component={UsersPage}  options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-
