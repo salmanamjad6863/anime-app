@@ -8,6 +8,7 @@ import {
   FlatList,
   Dimensions,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { API_ENDPOINTS } from "./lib/api";
 
 const { width } = Dimensions.get("window");
@@ -32,6 +33,7 @@ type HomeData = {
 };
 
 export default function HomeScreen() {
+  const navigation = useNavigation<any>();
   const [data, setData] = useState<HomeData | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -129,6 +131,14 @@ export default function HomeScreen() {
                 <TouchableOpacity
                   activeOpacity={0.85}
                   style={{ width }}
+                  onPress={() =>
+                    item?.id &&
+                    navigation.navigate("AnimeDetail", {
+                      id: item.id,
+                      name: item.name,
+                      poster: item.poster,
+                    })
+                  }
                 >
                   <View className="h-80 overflow-hidden bg-gray-900">
                     {skeleton ? (
@@ -170,6 +180,14 @@ export default function HomeScreen() {
                 <TouchableOpacity
                   activeOpacity={0.9}
                   className="px-5 py-2.5 rounded-full bg-red-600"
+                  onPress={() =>
+                    activeAnime?.id &&
+                    navigation.navigate("AnimeDetail", {
+                      id: activeAnime.id,
+                      name: activeAnime.name,
+                      poster: activeAnime.poster,
+                    })
+                  }
                 >
                   <Text className="text-white font-semibold text-sm">
                     ▶ Play
@@ -210,6 +228,14 @@ export default function HomeScreen() {
                   key={key}
                   className="w-1/3 p-2"
                   activeOpacity={0.85}
+                  onPress={() =>
+                    item?.id &&
+                    navigation.navigate("AnimeDetail", {
+                      id: item.id,
+                      name: item.name,
+                      poster: item.poster,
+                    })
+                  }
                 >
                   <View className="rounded-xl bg-gray-800 border border-gray-700 overflow-hidden">
                     {skeleton ? (

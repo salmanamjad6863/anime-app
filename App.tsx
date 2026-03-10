@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./HomeScreen";
+import AnimeDetailScreen from "./AnimeDetailScreen";
 import Auth from "./Auth";
 import UsersPage from "./UsersPage";
 
@@ -37,6 +38,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="AnimeDetail" component={AnimeDetailScreen} />
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="Users" component={UsersPage} />
       </Stack.Navigator>
